@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth
+END
+OnPrintLisenter.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth/OnPrintLisenter.java
+END
+BluetoothService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth/BluetoothService.java
+END
+PrintDataService.java
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth/PrintDataService.java
+END
+OnBluetoothLisenter.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth/OnBluetoothLisenter.java
+END
+PrintHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/bluetooth/PrintHelper.java
+END

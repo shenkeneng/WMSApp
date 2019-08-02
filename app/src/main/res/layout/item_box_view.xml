@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:orientation="horizontal"
+          android:layout_marginBottom="@dimen/common_padding">
+
+        <!--  <ImageView
+              android:id="@+id/ivIcon"
+              android:layout_width="30dp"
+              android:layout_height="30dp"
+              android:scaleType="centerCrop"
+              android:layout_marginRight="5dp"/>-->
+
+            <TextView
+                android:id="@+id/pickQtyTv"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="箱数："
+                android:gravity="right"
+                android:textSize="@dimen/font_larger"/>
+
+            <com.frxs.WMS.widget.CountEditText
+                android:id="@+id/cetGoodCountedit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="20dp" />
+        </LinearLayout>
+
+</LinearLayout>

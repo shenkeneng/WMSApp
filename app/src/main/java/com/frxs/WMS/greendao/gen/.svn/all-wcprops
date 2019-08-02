@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/71275/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/greendao/gen
+END
+DaoMaster.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/greendao/gen/DaoMaster.java
+END
+ProductEntityDao.java
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/greendao/gen/ProductEntityDao.java
+END
+DaoSession.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/frxs_server/!svn/ver/71275/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/greendao/gen/DaoSession.java
+END

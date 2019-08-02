@@ -1,0 +1,666 @@
+package com.frxs.ktprefer.activity
+
+import android.app.Activity
+import android.bluetooth.BluetoothDevice
+import android.content.*
+import android.graphics.BitmapFactory
+import android.os.Bundle
+import android.os.IBinder
+import android.os.RemoteException
+import android.text.TextUtils
+import android.util.Base64
+import android.util.Log
+import android.view.KeyEvent
+import android.view.View
+import android.widget.EditText
+import android.widget.Toast
+import com.frxs.WMS.MyApplication
+import com.frxs.WMS.R
+import com.frxs.WMS.activity.SearchBluetoothActivity
+import com.frxs.WMS.bluetooth.BluetoothService
+import com.frxs.WMS.bluetooth.OnBluetoothLisenter
+import com.frxs.WMS.bluetooth.PrintHelper
+import com.frxs.WMS.comms.Config
+import com.frxs.WMS.comms.GlobelDefines
+import com.frxs.WMS.model.OrderBean
+import com.frxs.WMS.rest.model.AjaxParams
+import com.frxs.WMS.rest.model.ApiResponse
+import com.frxs.WMS.rest.service.rxjava.BaseObserver
+import com.frxs.WMS.rest.service.rxjava.RxSchedulers
+import com.frxs.WMS.utils.ToastHelper
+import com.frxs.core.utils.CommonUtils
+import com.frxs.core.utils.SharedPreferencesHelper
+import com.frxs.core.utils.ToastUtils
+import com.gprinter.aidl.GpService
+import com.gprinter.command.EscCommand
+import com.gprinter.command.GpCom
+import com.gprinter.command.GpUtils
+import com.gprinter.command.LabelCommand
+import com.gprinter.io.GpDevice
+import com.gprinter.io.PortParameters
+import com.gprinter.save.PortParamDataBase
+import com.gprinter.service.GpPrintService
+import com.honeywell.aidc.BarcodeReadEvent
+import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.view_title.*
+import java.util.regex.Pattern
+
+/**
+ * Created by Chentie on 2018/6/5.
+ */
+class HomeActivity : BaseScanActivity() {
+
+    var orderBean = null as OrderBean?
+    var group = ""
+    private val mPrinterIndex = 0
+    private var mTotalCopies = 0
+    private var bluetoothService: BluetoothService? = null
+    private val DEBUG_TAG = "SamleApp"
+    private val INTENT_PORT_SETTINGS = 0
+    //    private var mPortParam : PortParameters? = null
+    private var mPrinterId = 0
+    private var mGpService: GpService? = null
+    private var conn: PrinterServiceConnection? = null
+
+    companion object {
+        val MESSAGE_CONNECT = 1
+        private val MAIN_QUERY_PRINTER_STATUS = 0xfe
+        private val REQUEST_PRINT_LABEL = 0xfd
+        private val REQUEST_PRINT_RECEIPT = 0xfc
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
+        initView()
+        initEvent()
+        initData()
+    }
+
+    private fun initView() {
+        actionBackTv!!.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_head_portrait, 0, 0, 0)
+        titleTv!!.setText("扫描装箱")
+        actionRightTv.visibility = View.VISIBLE
+        actionRightTv!!.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.icon_head_portrait, 0, 0, 0)
+        actionRightTv!!.text = ""
+    }
+
+    private fun initEvent() {
+        // 注册实时状态查询广播
+        registerReceiver(mBroadcastReceiver, IntentFilter(GpCom.ACTION_DEVICE_REAL_STATUS))
+        /**
+         * 标签模式下，可注册该广播，在需要打印内容的最后加入addQueryPrinterStatus(RESPONSE_MODE mode)
+         * ，在打印完成后会接收到，action为GpCom.ACTION_LABEL_RESPONSE的广播，特别用于连续打印，
+         * 可参照该sample中的sendLabelWithResponse方法与广播中的处理
+         **/
+        registerReceiver(mBroadcastReceiver, IntentFilter(GpCom.ACTION_LABEL_RESPONSE))
+        printBtn.setOnClickListener(View.OnClickListener {
+            if (CommonUtils.isFastDoubleClick()) {
+                return@OnClickListener
+            }
+            if (orderBean != null) {
+                SetPackQty()
+            } else {
+                ToastUtils.show(this@HomeActivity, "未获取到订单详情")
+            }
+        })
+
+        cancelBtn.setOnClickListener(View.OnClickListener {
+            if (CommonUtils.isFastDoubleClick()) {
+                return@OnClickListener
+            }
+            cetGoodCountedit.count = 0
+            orderLl.visibility = View.INVISIBLE
+            tvTips.visibility = View.VISIBLE
+        })
+
+        actionBackTv.setOnClickListener(View.OnClickListener {
+            gotoActivity(MineActivity::class.java, false)
+        })
+
+        actionRightTv.setOnClickListener(View.OnClickListener {
+            gotoActivity(SearchBluetoothActivity::class.java, false)
+        })
+    }
+
+    private fun SetPackQty() {
+        var params = AjaxParams()
+        params.put("StoreID", orderBean!!.storeID)
+        params.put("DeliveryTime",  orderBean!!.deliveryTime)
+        params.put("PackQty",  cetGoodCountedit.count)
+        params.put("UserID", userID)
+        params.put("UserName", userName)
+        params.put("WID", wid)
+        params.put("OpAreaID",  orderBean!!.opAreaID)
+
+        getService().SetPackQty(params.urlParams)
+                .compose(RxSchedulers.compose(this, true))
+                .subscribe(object : BaseObserver<String>() {
+                    override fun onResponse(result: ApiResponse<String>?) {
+                      /*  if(result!!.isSuccessful) {
+                           // sendLabe2()
+                            var macAddress = SharedPreferencesHelper.getInstance(this@HomeActivity, GlobelDefines.PREFS_NAME).getString(Config.KEY_BT_MAC, "")
+                            var rel = mGpService!!.openPort(0, PortParameters.BLUETOOTH ,
+                                    macAddress, 0)
+                        } else {
+
+                            ToastUtils.show(this@HomeActivity, result.info)
+                        }*/
+                        if (GpDevice.STATE_NONE == mGpService!!.getPrinterConnectStatus(mPrinterId)) {
+                            connectOrDisConnectToDevice()
+                        }
+                        printTestClicked()
+                    }
+
+                    override fun onFailure(t: Throwable?) {
+                        super.onFailure(t)
+                    }
+                });
+    }
+
+    private fun reqPickingOrder(str: String) {
+        var params = AjaxParams()
+
+        params.put("PickID", str)
+        params.put("WID", wid)
+        params.put("OpAreaID", opAreaID)
+
+        getService().GetPickingOrder(params.urlParams)
+                .compose(RxSchedulers.compose(this, true))
+                .subscribe(object : BaseObserver<OrderBean>() {
+                    override fun onResponse(result: ApiResponse<OrderBean>?) {
+                        if(result!!.isSuccessful) {
+                            ToastUtils.show(this@HomeActivity, "请求成功")
+                            if (result!!.data != null) {
+                                orderBean = result!!.data
+                                visibilityContent()
+                            }
+                        } else {
+                            ToastUtils.show(this@HomeActivity, result.info)
+                        }
+                    }
+
+                    override fun onFailure(t: Throwable?) {
+                        super.onFailure(t)
+                    }
+                });
+    }
+
+    private fun visibilityContent() {
+        tvTips.visibility = View.INVISIBLE
+        orderLl.visibility = View.VISIBLE
+        cetGoodCountedit.count = 0
+        deliverCodeTv.text = orderBean!!.sendCardNo
+        deliverTimeTv.text = getDateString()
+        storeIDTv.text = orderBean!!.storeNo + "-" + orderBean!!.storeName
+    }
+
+    fun getDateString(): String {
+       val source = orderBean!!.deliveryTime //原文本
+        //正则式，在（三位数-八位数）的格式前后可以有任意文本
+        val pattern = ".*(\\d{4}-\\d{2}-\\d{2}).*"  // ".*(\\d{3}-\\d{8}).*"
+        //用正则式匹配文本获取匹配器
+        val matcher = Pattern.compile(pattern).matcher(source)
+        while(matcher.find()) {
+            group = matcher.group(1)
+        }
+        return group
+    }
+
+    override fun onResume() {
+        var helper = SharedPreferencesHelper.getInstance(this@HomeActivity, Config.PREFS_NAME)
+        var from = helper.getString(Config.KEY_FROM, "")
+        if (from.equals("login")) {
+            orderLl.visibility = View.INVISIBLE
+            tvTips.visibility = View.VISIBLE
+            helper.putValue(Config.KEY_FROM, "mine")
+        } else if (from.equals("mine") && orderLl.visibility == View.VISIBLE) {
+        } else if (orderLl.visibility == View.INVISIBLE) {
+        }
+        super.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //this.unregisterReceiver(PrinterStatusBroadcastReceiver)
+        if (conn != null) {
+            unbindService(conn) // unBindService
+        }
+        if (bluetoothService!!.isDiscovering()) {
+            bluetoothService!!.cancelDevices()
+        }
+        bluetoothService!!.unregisterReceiver()
+        unregisterReceiver(mBroadcastReceiver)
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            showExitConfirmDialog()
+        } else if (keyCode == KeyEvent.KEYCODE_HOME) {
+        }
+        return super.onKeyDown(keyCode, event)
+    }
+
+    override fun onSuccessEvent(event: BarcodeReadEvent) {
+        val barcodeData = event.barcodeData
+        if (!TextUtils.isEmpty(barcodeData)) {
+            //TODO: 先在缓存中找 没有再请求接口
+            reqPickingOrder(barcodeData)
+        }
+    }
+
+    override fun onSuccessEventStr(event: String) {
+        if (!TextUtils.isEmpty(event)) {
+            //TODO: 先在缓存中找 没有再请求接口
+            reqPickingOrder(event)
+        }
+    }
+
+    private fun initData() {
+        connection()
+<<<<<<< .mine
+        //registerBroadcast()
+        initBtPrinter()
+        // 判断当前是否开启蓝牙
+        if (bluetoothService!!.isOpen()) {
+           var macAddress = SharedPreferencesHelper.getInstance(this, GlobelDefines.PREFS_NAME).getString(Config.KEY_BT_MAC, "")
+            if (bluetoothService!!.checkBluetoothAddress(macAddress)) {
+                val btDevice = bluetoothService!!.getRemoteDevice(macAddress)
+                if (btDevice.bondState == BluetoothDevice.BOND_NONE) {
+                    try {
+                        val createBondMethod = BluetoothDevice::class.java.getMethod("createBond")
+                        createBondMethod.invoke(btDevice)
+                    } catch (e: Exception) {
+                        ToastHelper.toastShort(this, "配对失败")
+                    }
+
+                } else if (btDevice.bondState == BluetoothDevice.BOND_BONDED) {
+                }
+            } else {
+                ToastHelper.toastShort(this, "无效的蓝牙MAC地址，请重新配置")
+                val intent = Intent(this, SearchBluetoothActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            ToastHelper.toastShort(this, "蓝牙未打开")
+            bluetoothService!!.openBluetooth(this)
+        }
+
+=======
+
+        MyApplication.getInstance().syncCaseData(this)
+>>>>>>> .r70477
+    }
+
+    private fun sendReceiptWithResponse() {
+        val esc = EscCommand()
+        esc.addInitializePrinter()
+        esc.addPrintAndFeedLines(3.toByte())
+        esc.addSelectJustification(EscCommand.JUSTIFICATION.CENTER)// 设置打印居中
+        esc.addSelectPrintModes(EscCommand.FONT.FONTA, EscCommand.ENABLE.OFF, EscCommand.ENABLE.ON, EscCommand.ENABLE.ON, EscCommand.ENABLE.OFF)// 设置为倍高倍宽
+        esc.addText("Sample\n") // 打印文字
+        esc.addPrintAndLineFeed()
+
+        /* 打印文字 */
+        esc.addSelectPrintModes(EscCommand.FONT.FONTA, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF)// 取消倍高倍宽
+        esc.addSelectJustification(EscCommand.JUSTIFICATION.LEFT)// 设置打印左对齐
+        esc.addText("Print text\n") // 打印文字
+        esc.addText("Welcome to use SMARNET printer!\n") // 打印文字
+
+        /* 打印文字 */
+        esc.addSelectJustification(EscCommand.JUSTIFICATION.CENTER)// 设置打印左对齐
+        esc.addText("Completed!\r\n") // 打印结束
+        // 开钱箱
+        esc.addGeneratePlus(LabelCommand.FOOT.F5, 255.toByte(), 255.toByte())
+        esc.addPrintAndFeedLines(8.toByte())
+
+        // 加入查询打印机状态，打印完成后，此时会接收到GpCom.ACTION_DEVICE_STATUS广播
+        esc.addQueryPrinterStatus()
+
+        val datas = esc.command // 发送数据
+        val bytes = GpUtils.ByteTo_byte(datas)
+        val sss = Base64.encodeToString(bytes, Base64.DEFAULT)
+        val rs: Int
+        try {
+            rs = mGpService!!.sendEscCommand(mPrinterIndex, sss)
+            val r = GpCom.ERROR_CODE.values()[rs]
+            if (r != GpCom.ERROR_CODE.SUCCESS) {
+                Toast.makeText(applicationContext, GpCom.getErrorText(r), Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: RemoteException) {
+            // TODO Auto-generated catch block
+            e.printStackTrace()
+        }
+
+    }
+
+    private fun sendLabelWithResponse() {
+       /* val tsc = LabelCommand()
+        tsc.addSize(60, 40) // 设置标签尺寸，按照实际尺寸设置
+        tsc.addGap(0) // 设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0
+        tsc.addDirection(LabelCommand.DIRECTION.BACKWARD, LabelCommand.MIRROR.NORMAL)// 设置打印方向
+        // 开启带Response的打印，用于连续打印
+        tsc.addQueryPrinterStatus(LabelCommand.RESPONSE_MODE.ON)
+        tsc.addReference(0, 0)// 设置原点坐标
+        tsc.addTear(EscCommand.ENABLE.ON) // 撕纸模式开启
+        tsc.addCls()// 清除打印缓冲区
+        // 绘制简体中文
+        tsc.addText(20, 20, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "Welcome to use SMARNET printer!")
+        tsc.addPrint(1, 1) // 打印标签
+        tsc.addSound(2, 100) // 打印标签后 蜂鸣器响
+        tsc.addCashdrwer(LabelCommand.FOOT.F5, 255, 255)
+
+
+        val datas = tsc.command // 发送数据
+        val bytes = GpUtils.ByteTo_byte(datas)
+        val str = Base64.encodeToString(bytes, Base64.DEFAULT)
+        val rel: Int
+        try {
+            rel = mGpService!!.sendLabelCommand(mPrinterIndex, str)
+            val r = GpCom.ERROR_CODE.values()[rel]
+            if (r != GpCom.ERROR_CODE.SUCCESS) {
+                Toast.makeText(applicationContext, GpCom.getErrorText(r), Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }*/
+
+        val tsc = LabelCommand()
+        tsc.addSize(60, 40) // 设置标签尺寸，按照实际尺寸设置
+        tsc.addGap(10) // 设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0
+        tsc.addDirection(LabelCommand.DIRECTION.BACKWARD, LabelCommand.MIRROR.NORMAL)// 设置打印方向
+        tsc.addReference(0, 0)// 设置原点坐标
+        tsc.addTear(EscCommand.ENABLE.ON) // 撕纸模式开启
+        tsc.addCls()// 清除打印缓冲区
+
+        tsc.addText(40, 30, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_2, LabelCommand.FONTMUL.MUL_2,
+                "129-11")
+        tsc.addText(40, 100, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "提货：2018-05-30")
+        tsc.addText(330, 100, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "待装区：101")
+        tsc.addText(40, 150, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "80010071-开福才子佳苑店")
+        tsc.addText(40, 180, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "打印：复核员      2018/06/15 10:37")
+        tsc.addText(40, 210, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "包含：小货、常规、冷冻")
+        tsc.addText(330, 240, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,
+                "1/1")
+
+        tsc.addPrint(1, 1) // 打印标签
+        tsc.addSound(2, 100) // 打印标签后 蜂鸣器响
+        tsc.addCashdrwer(LabelCommand.FOOT.F5, 255, 255)
+        val datas = tsc.command // 发送数据
+        val bytes = GpUtils.ByteTo_byte(datas)
+        val str = Base64.encodeToString(bytes, Base64.DEFAULT)
+        val rel: Int
+        try {
+            rel = mGpService!!.sendLabelCommand(mPrinterIndex, str)
+            val r = GpCom.ERROR_CODE.values()[rel]
+            if (r != GpCom.ERROR_CODE.SUCCESS) {
+                Toast.makeText(applicationContext, GpCom.getErrorText(r), Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+
+    }
+    private fun initBtPrinter() {
+        bluetoothService = PrintHelper.getBluetoothService(this)
+        bluetoothService!!.registerReceiver()
+        bluetoothService!!.setBluetoothLisenter(object : OnBluetoothLisenter {
+            override fun onBluetoothStateChanged(isOpened: Boolean) {
+                if (isOpened) {
+                    printBtn.setText("开始打印")
+                } else {
+                    printBtn.setText("打开蓝牙")
+                }
+            }
+
+            override fun onBluetoothDiscoveryFinished(bondDevices: List<BluetoothDevice>, unbondDevices: List<BluetoothDevice>) {
+
+            }
+
+            override fun onBluetoothDiscoveryFound(bondDevices: List<BluetoothDevice>, unbondDevices: List<BluetoothDevice>) {
+
+            }
+
+            override fun onBluetoothDiscoveryStarted() {
+
+            }
+
+            override fun onBluetoothBondStateChanged(device: BluetoothDevice, isSuccess: Boolean) {
+            }
+        })
+
+        if (bluetoothService!!.isOpen()) {
+            printBtn.setText("开始打印")
+        } else {
+            printBtn.setText("打开蓝牙")
+        }
+    }
+
+    /**
+     * 初始化打印服务
+     */
+    internal inner class PrinterServiceConnection : ServiceConnection {
+        override fun onServiceDisconnected(name: ComponentName) {
+            Log.i("ServiceConnection", "onServiceDisconnected() called")
+            mGpService = null
+        }
+
+        override fun onServiceConnected(name: ComponentName, service: IBinder) {
+            mGpService = GpService.Stub.asInterface(service)
+
+            connectOrDisConnectToDevice();
+        }
+    }
+
+    /**
+     * 绑定打印服务
+     */
+    private fun connection() {
+        conn = PrinterServiceConnection()
+        val intent = Intent(this, GpPrintService::class.java)
+        bindService(intent, conn, Context.BIND_AUTO_CREATE) // bindService
+    }
+
+
+    /**
+     * 连接设备
+     */
+    internal fun connectOrDisConnectToDevice() {
+        var rel = 0
+        var macAddress = SharedPreferencesHelper.getInstance(this@HomeActivity, GlobelDefines.PREFS_NAME).getString(Config.KEY_BT_MAC, "")
+        if (!TextUtils.isEmpty(macAddress)) {
+            try {
+                rel = mGpService!!.openPort(mPrinterId, PortParameters.BLUETOOTH,
+                        macAddress, 0)
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+            }
+
+            val r = GpCom.ERROR_CODE.values()[rel]
+            Log.e(DEBUG_TAG, "result :" + r.toString())
+            if (r != GpCom.ERROR_CODE.SUCCESS) {
+                if (r == GpCom.ERROR_CODE.DEVICE_ALREADY_OPEN) {
+//                    mPortParam!!.setPortOpenState(true)
+                } else {
+                    messageBox(GpCom.getErrorText(r))
+                }
+            }
+        } else {
+            Log.d(DEBUG_TAG, "DisconnectToDevice ")
+        }
+    }
+
+    private val mBroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            val action = intent.action
+            Log.d("TAG", action)
+            // GpCom.ACTION_DEVICE_REAL_STATUS 为广播的IntentFilter
+            if (action == GpCom.ACTION_DEVICE_REAL_STATUS) {
+
+                // 业务逻辑的请求码，对应哪里查询做什么操作
+                val requestCode = intent.getIntExtra(GpCom.EXTRA_PRINTER_REQUEST_CODE, -1)
+                // 判断请求码，是则进行业务操作
+                if (requestCode == MAIN_QUERY_PRINTER_STATUS) {
+
+                    val status = intent.getIntExtra(GpCom.EXTRA_PRINTER_REAL_STATUS, 16)
+                    var str: String
+                    if (status == GpCom.STATE_NO_ERR) {
+                        str = "打印机正常"
+                    } else {
+                        str = "打印机 "
+                        if ((status and GpCom.STATE_OFFLINE).toByte() > 0) {
+                            str += "脱机"
+                        }
+                        if ((status and GpCom.STATE_PAPER_ERR).toByte() > 0) {
+                            str += "缺纸"
+                        }
+                        if ((status and GpCom.STATE_COVER_OPEN).toByte() > 0) {
+                            str += "打印机开盖"
+                        }
+                        if ((status and GpCom.STATE_ERR_OCCURS).toByte() > 0) {
+                            str += "打印机出错"
+                        }
+                        if ((status and GpCom.STATE_TIMES_OUT).toByte() > 0) {
+                            str += "查询超时"
+                        }
+                    }
+
+                    Toast.makeText(applicationContext, "打印机：$mPrinterIndex 状态：$str", Toast.LENGTH_SHORT)
+                            .show()
+                } else if (requestCode == REQUEST_PRINT_LABEL) {
+                    val status = intent.getIntExtra(GpCom.EXTRA_PRINTER_REAL_STATUS, 16)
+                    if (status == GpCom.STATE_NO_ERR) {
+                        sendLabe2()
+                    } else {
+                        Toast.makeText(this@HomeActivity, "query printer status error", Toast.LENGTH_SHORT).show()
+                    }
+                } else if (requestCode == REQUEST_PRINT_RECEIPT) {
+                    val status = intent.getIntExtra(GpCom.EXTRA_PRINTER_REAL_STATUS, 16)
+                    if (status == GpCom.STATE_NO_ERR) {
+//                        sendReceipt()
+                    } else {
+                        Toast.makeText(this@HomeActivity, "query printer status error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else if (action == GpCom.ACTION_RECEIPT_RESPONSE) {
+                if (--mTotalCopies > 0) {
+                    sendReceiptWithResponse()
+                }
+            } else if (action == GpCom.ACTION_LABEL_RESPONSE) {
+                val data = intent.getByteArrayExtra(GpCom.EXTRA_PRINTER_LABEL_RESPONSE)
+                val cnt = intent.getIntExtra(GpCom.EXTRA_PRINTER_LABEL_RESPONSE_CNT, 1)
+                val d = String(data, 0, cnt)
+                /**
+                 * 这里的d的内容根据RESPONSE_MODE去判断返回的内容去判断是否成功，具体可以查看标签编程手册SET
+                 * RESPONSE指令
+                 * 该sample中实现的是发一张就返回一次,这里返回的是{00,00001}。这里的对应{Status,######,ID}
+                 * 所以我们需要取出STATUS
+                 */
+                Log.d("LABEL RESPONSE", d)
+
+                if (--mTotalCopies > 0 && d[1].toInt() == 0x00) {
+                    sendLabelWithResponse()
+                }
+            }
+        }
+    }
+
+    internal fun sendLabe2() {
+        val tsc = LabelCommand()
+        tsc.addSize(60, 40) // 设置标签尺寸，按照实际尺寸设置
+        tsc.addGap(10) // 设置标签间隙，按照实际尺寸设置，如果为无间隙纸则设置为0
+        tsc.addDirection(LabelCommand.DIRECTION.BACKWARD, LabelCommand.MIRROR.NORMAL)// 设置打印方向
+        tsc.addReference(0, 0)// 设置原点坐标
+        tsc.addTear(EscCommand.ENABLE.ON) // 撕纸模式开启
+        tsc.addCls()// 清除打印缓冲区
+
+        tsc.addText(40, 30, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_2, LabelCommand.FONTMUL.MUL_2,
+                "129-11")
+        tsc.addPrint(1, 1) // 打印标签
+        tsc.addSound(2, 100) // 打印标签后 蜂鸣器响
+        tsc.addCashdrwer(LabelCommand.FOOT.F5, 255, 255)
+        val datas = tsc.command // 发送数据
+        val bytes = GpUtils.ByteTo_byte(datas)
+        val str = Base64.encodeToString(bytes, Base64.DEFAULT)
+        val rel: Int
+        try {
+            rel = mGpService!!.sendLabelCommand(mPrinterIndex, str)
+            val r = GpCom.ERROR_CODE.values()[rel]
+            if (r != GpCom.ERROR_CODE.SUCCESS) {
+                Toast.makeText(applicationContext, GpCom.getErrorText(r), Toast.LENGTH_SHORT).show()
+            }
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        // TODO Auto-generated method stub
+        Log.d(DEBUG_TAG, "requestCode$requestCode\nresultCode$resultCode")
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == INTENT_PORT_SETTINGS) {
+            // getIP settings info from IP settings dialog
+            if (resultCode == Activity.RESULT_OK) {
+                var bundle: Bundle? = Bundle()
+                bundle = data.extras
+                Log.d(DEBUG_TAG, "PrinterId " + mPrinterId)
+                var param = bundle!!.getInt(GpPrintService.PORT_TYPE)
+//                mPortParam!!.setPortType(param)
+                Log.d(DEBUG_TAG, "PortType " + param)
+                var str = bundle.getString(GpPrintService.IP_ADDR)
+//                mPortParam!!.setIpAddr(str)
+                Log.d(DEBUG_TAG, "IP addr " + str!!)
+                param = bundle.getInt(GpPrintService.PORT_NUMBER)
+//                mPortParam!!.setPortNumber(param)
+                Log.d(DEBUG_TAG, "PortNumber " + param)
+                str = bundle.getString(GpPrintService.BLUETOOT_ADDR)
+//                mPortParam!!.setBluetoothAddr(str)
+                Log.d(DEBUG_TAG, "BluetoothAddr " + str!!)
+                str = bundle.getString(GpPrintService.USB_DEVICE_NAME)
+//                mPortParam!!.setUsbDeviceName(str)
+                Log.d(DEBUG_TAG, "USBDeviceName " + str!!)
+                //SetPortParamToView(mPortParam)
+//                if (CheckPortParamters(mPortParam!!)!!) {
+//                    val database = PortParamDataBase(this)
+//                    database.deleteDataBase("" + mPrinterId)
+//                    database.insertPortParam(mPrinterId, mPortParam)
+//                } else {
+//                    messageBox("Invalid parameters!")
+//                }
+
+            } else {
+                messageBox("Port parameters is not saved!")
+            }
+        }
+    }
+
+    private fun messageBox(err: String) {
+        Toast.makeText(applicationContext,
+                err, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun printTestClicked() {
+        try {
+            val type = mGpService!!.getPrinterCommandType(mPrinterIndex)
+            if (type == GpCom.ESC_COMMAND) {
+                mTotalCopies = 1
+                sendReceiptWithResponse()
+            } else if (type == GpCom.LABEL_COMMAND) {
+                mTotalCopies = 1
+                sendLabelWithResponse()
+            } else {
+                Toast.makeText(this, "Printer is not receipt mode", Toast.LENGTH_SHORT).show()
+            }
+        } catch (e1: RemoteException) {
+            e1.printStackTrace()
+        }
+
+    }
+
+}

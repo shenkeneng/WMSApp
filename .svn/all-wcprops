@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp
+END
+import-summary.txt
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/frxs_server/!svn/ver/70150/wmsAndroid/trunk/WMSApp/import-summary.txt
+END
+gradlew
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/gradlew
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/.gitignore
+END
+local.properties
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/local.properties
+END
+WMSApp.iml
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/frxs_server/!svn/ver/70150/wmsAndroid/trunk/WMSApp/WMSApp.iml
+END
+gradle.properties
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/gradle.properties
+END
+gradlew.bat
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/gradlew.bat
+END
+build.gradle
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/frxs_server/!svn/ver/70150/wmsAndroid/trunk/WMSApp/build.gradle
+END
+settings.gradle
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/settings.gradle
+END

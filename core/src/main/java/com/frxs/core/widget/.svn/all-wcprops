@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/frxs_server/!svn/ver/70107/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget
+END
+SwipeBackLayout.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/SwipeBackLayout.java
+END
+QuantityView.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/QuantityView.java
+END
+PtrFrameLayoutEx.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/PtrFrameLayoutEx.java
+END
+NoReloadFragmentTabHost.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/NoReloadFragmentTabHost.java
+END
+MaterialDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/MaterialDialog.java
+END
+BottomScrollView.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/BottomScrollView.java
+END
+SpecifiedProportionLinearLayout.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/SpecifiedProportionLinearLayout.java
+END
+CustomPopWindow.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/CustomPopWindow.java
+END
+NoScrollListView.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/NoScrollListView.java
+END
+WidthEquelsHeightImageView.java
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/WidthEquelsHeightImageView.java
+END
+RippleView.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/RippleView.java
+END
+PinnedSectionListView.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/PinnedSectionListView.java
+END
+EmptyView.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/EmptyView.java
+END
+CheckableLinearLayout.java
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/CheckableLinearLayout.java
+END
+MyProgressDialog.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/MyProgressDialog.java
+END
+NoScrollGridView.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/NoScrollGridView.java
+END
+BadgeView.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/java/com/frxs/core/widget/BadgeView.java
+END

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/shape_bg_item">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/ic_close_btn"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/spacing_tiny"
+        android:text="4小时前"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="第二种方法:冷藏或者常温。表层巧克力已经冷却成型，酥皮外酥里嫩，手抓着大口咀嚼，咬肌和面包的对抗让表层的可可粉飞舞。"
+        android:layout_margin="10dp"/>
+
+    <com.frxs.WMS.widget.MultiImageView
+        android:id="@+id/multi_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/ic_close_btn"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/spacing_tiny"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:text="赞"
+        android:background="@drawable/shape_capsule_gray"
+        android:padding="@dimen/common_padding"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/ic_close_btn"
+        android:gravity="center_vertical"
+        android:drawablePadding="@dimen/spacing_tiny"
+        android:text="国国，放着，再一会"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_capsule_gray"
+        android:padding="@dimen/common_padding"/>
+
+</LinearLayout>

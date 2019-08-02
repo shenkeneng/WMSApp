@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/rest/model
+END
+ApiRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/rest/model/ApiRequest.java
+END
+AjaxParams.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/rest/model/AjaxParams.java
+END
+ApiResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/rest/model/ApiResponse.java
+END

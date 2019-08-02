@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        style="@style/ActionBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/frxs_blue">
+
+        <include layout="@layout/view_title" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/orderLl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/frxs_white"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_large"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/deliverCodeTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0011"
+                    android:textColor="@color/frxs_black"
+                    android:textSize="35sp" />
+
+                <TextView
+                    android:id="@+id/deliverTimeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2018-6-5"
+                    android:textSize="@dimen/font_large" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/storeIDTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="0788-芙蓉兴盛早安星晨店芙蓉兴盛早安星晨店"
+                android:textSize="@dimen/font_large" />
+
+            <TextView
+                android:id="@+id/pickIdTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text=""
+                android:textSize="@dimen/font_large" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/pickLineTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="拣货流水线：散货一线"
+                    android:textSize="@dimen/font_normal" />
+
+                <TextView
+                    android:id="@+id/shelfAreaTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="待装区：33"
+                    android:textSize="@dimen/font_normal" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/common_padding"
+                android:background="@color/frxs_gray" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lvBox"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:choiceMode="singleChoice"
+                android:divider="@color/transparent"
+                android:dividerHeight="@dimen/common_padding"
+                android:padding="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/common_padding"
+                android:background="@color/frxs_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/common_margin"
+                android:layout_marginTop="@dimen/common_margin"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/common_padding"
+                    android:background="@drawable/selector_r_gray_stroke"
+                    android:text="取消"
+                    android:textColor="@color/custom_text_state_color"
+                    android:textSize="@dimen/font_larger" />
+
+                <Button
+                    android:id="@+id/printBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_r_gray_red_stroke"
+                    android:text="打印"
+                    android:textColor="@color/frxs_white"
+                    android:textSize="@dimen/font_larger" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTips"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/half_capsule_btn_height"
+                android:background="@color/frxs_white"
+                android:gravity="center_horizontal"
+                android:text="请扫描拣货单条码"
+                android:textSize="@dimen/font_larger"
+                android:drawableTop="@mipmap/img_scan_pressed"
+                android:drawablePadding="@dimen/common_margin"
+                android:layout_marginTop="@dimen/spacing_large"/>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,455 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/frxs_server/!svn/ver/71190/wmsAndroid/trunk/WMSApp/app/src/main/res/layout
+END
+activity_login.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/frxs_server/!svn/ver/70495/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_login.xml
+END
+activity_update_psw.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_update_psw.xml
+END
+fragment_store_cart.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_store_cart.xml
+END
+customer_notitfication_layout.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/customer_notitfication_layout.xml
+END
+view_pager.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_pager.xml
+END
+item_order.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_order.xml
+END
+simple_dropdown_item_line.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/simple_dropdown_item_line.xml
+END
+fragment_purchase_record.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_purchase_record.xml
+END
+activity_order_details.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_order_details.xml
+END
+view_banner.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_banner.xml
+END
+activity_fill_invitation_code.xml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_fill_invitation_code.xml
+END
+nav_header_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/nav_header_main.xml
+END
+record_rc.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/record_rc.xml
+END
+app_bar_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/app_bar_main.xml
+END
+set_push_time.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/set_push_time.xml
+END
+dialog_assign_deliver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/dialog_assign_deliver.xml
+END
+item_settle_product.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_settle_product.xml
+END
+content_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/content_main.xml
+END
+item_bluetooth.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/frxs_server/!svn/ver/70470/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_bluetooth.xml
+END
+item_filter_menu.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_filter_menu.xml
+END
+view_tab_content.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_tab_content.xml
+END
+item_select_unit.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_select_unit.xml
+END
+activity_my_order.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_my_order.xml
+END
+view_countedittext.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/frxs_server/!svn/ver/70528/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_countedittext.xml
+END
+product_head.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/product_head.xml
+END
+live_details.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/live_details.xml
+END
+item_good.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_good.xml
+END
+item_assign_deliver_order.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_assign_deliver_order.xml
+END
+activity_delivery_statistics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_delivery_statistics.xml
+END
+activity_submit_order.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_submit_order.xml
+END
+view_title.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/frxs_server/!svn/ver/70499/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_title.xml
+END
+view_tab_content2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_tab_content2.xml
+END
+item_order_track.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_order_track.xml
+END
+activity_capture.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_capture.xml
+END
+view_pop_down.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_pop_down.xml
+END
+item_store_cart.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_store_cart.xml
+END
+activity_live_photo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_live_photo.xml
+END
+item_attached_shop.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_attached_shop.xml
+END
+activity_choose_shop.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_choose_shop.xml
+END
+customer_notitfication_layout_one.xml
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/customer_notitfication_layout_one.xml
+END
+view_search_list.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_search_list.xml
+END
+view_contact_us.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_contact_us.xml
+END
+item_box_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/71190/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_box_view.xml
+END
+activity_main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_main.xml
+END
+activity_home_md_style.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_home_md_style.xml
+END
+activity_searchbluetooth.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/frxs_server/!svn/ver/70487/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_searchbluetooth.xml
+END
+product_foot.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/product_foot.xml
+END
+view_select_unit.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_select_unit.xml
+END
+push_set_dialog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/push_set_dialog.xml
+END
+view_textview.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_textview.xml
+END
+item_group_pending_order.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_group_pending_order.xml
+END
+activity_assign_deliver.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_assign_deliver.xml
+END
+fragment_mine.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70528/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_mine.xml
+END
+fragment_home.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_home.xml
+END
+item_delivery_statistics.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_delivery_statistics.xml
+END
+dialog_confirm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/dialog_confirm.xml
+END
+product_img.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/product_img.xml
+END
+view_shop_info.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_shop_info.xml
+END
+activity_submit_product.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_submit_product.xml
+END
+item_order_in.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_order_in.xml
+END
+live_head.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/live_head.xml
+END
+fragment_live_product.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_live_product.xml
+END
+item_start_info.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_start_info.xml
+END
+dialog_evironments.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/frxs_server/!svn/ver/70196/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/dialog_evironments.xml
+END
+view_settle_accounts.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_settle_accounts.xml
+END
+dialog_progreess_update.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/dialog_progreess_update.xml
+END
+activity_pay_success.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_pay_success.xml
+END
+item_product.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/item_product.xml
+END
+record_head.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/record_head.xml
+END
+activity_home.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/71190/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_home.xml
+END
+dialog_modify_delivery_no.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/dialog_modify_delivery_no.xml
+END
+activity_splash.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/frxs_server/!svn/ver/70174/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_splash.xml
+END
+view_shop_btn.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/view_shop_btn.xml
+END
+activity_good_details.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/activity_good_details.xml
+END
+fragment_product_info.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/layout/fragment_product_info.xml
+END

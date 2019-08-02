@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/frxs_server/!svn/ver/70107/wmsAndroid/trunk/WMSApp/core/src/main/res/layout
+END
+view_loading_indicator.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/view_loading_indicator.xml
+END
+pager_error.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/pager_error.xml
+END
+view_footer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/view_footer.xml
+END
+qv_dialog_changequantity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/qv_dialog_changequantity.xml
+END
+layout_material_dialog.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/layout_material_dialog.xml
+END
+pager_loading.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/pager_loading.xml
+END
+view_loading_progress.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/view_loading_progress.xml
+END
+pager_empty.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/core/src/main/res/layout/pager_empty.xml
+END

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="订购流程"
+        android:background="@drawable/shape_bg_item"
+        android:padding="@dimen/common_margin"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/spacing_tiny">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="在线付款"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/font_normal"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="提交订单，微信支付付款"
+            android:textSize="@dimen/font_small"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/spacing_tiny">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="等待收货"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/font_normal"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="成功付款后，我们将及时安排发货"
+            android:textSize="@dimen/font_small"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/spacing_tiny">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="门店提货"
+            android:textColor="@color/black_de"
+            android:textSize="@dimen/font_normal"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="发货后，在发货时间到所选门店自提"
+            android:textSize="@dimen/font_small"
+            android:drawableLeft="@mipmap/ic_close_btn"
+            android:drawablePadding="@dimen/common_padding"/>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_start_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="- 点击查看商品信息 -"
+        android:textColor="@color/frxs_red"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_capsule_gray"
+        android:padding="@dimen/common_padding"/>
+
+</LinearLayout>

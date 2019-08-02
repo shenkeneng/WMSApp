@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/res/values
+END
+colors.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/frxs_server/!svn/ver/70495/wmsAndroid/trunk/WMSApp/app/src/main/res/values/colors.xml
+END
+styles.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/values/styles.xml
+END
+drawables.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/values/drawables.xml
+END
+jpush_style.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/values/jpush_style.xml
+END
+strings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/res/values/strings.xml
+END
+array.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/frxs_server/!svn/ver/70196/wmsAndroid/trunk/WMSApp/app/src/main/res/values/array.xml
+END
+dimens.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/frxs_server/!svn/ver/70376/wmsAndroid/trunk/WMSApp/app/src/main/res/values/dimens.xml
+END
+ids.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/res/values/ids.xml
+END

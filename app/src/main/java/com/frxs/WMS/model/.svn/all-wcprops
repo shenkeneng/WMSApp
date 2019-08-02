@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model
+END
+OrderBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/frxs_server/!svn/ver/71119/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/OrderBean.java
+END
+AppVersionInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/AppVersionInfo.java
+END
+PackingBoxBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/frxs_server/!svn/ver/71275/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/PackingBoxBean.java
+END
+PackQty.java
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/PackQty.java
+END
+SectionListItem.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/SectionListItem.java
+END
+ShelfAreaBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/ShelfAreaBean.java
+END
+OrderDetails.java
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/OrderDetails.java
+END
+AssignDeliverOrderBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/AssignDeliverOrderBean.java
+END
+WarehouseSysParam.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/WarehouseSysParam.java
+END
+GetDeliverList.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/GetDeliverList.java
+END
+AssignDeliverOrderList.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/AssignDeliverOrderList.java
+END
+OrderInOrderList.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/OrderInOrderList.java
+END
+UserInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/UserInfo.java
+END
+TrachOrder.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/TrachOrder.java
+END
+DeliveryStatistics.java
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/src/main/java/com/frxs/WMS/model/DeliveryStatistics.java
+END

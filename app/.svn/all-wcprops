@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/frxs_server/!svn/ver/73120/wmsAndroid/trunk/WMSApp/app
+END
+app.iml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/frxs_server/!svn/ver/70107/wmsAndroid/trunk/WMSApp/app/app.iml
+END
+.gitignore
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/.gitignore
+END
+lint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/frxs_server/!svn/ver/70150/wmsAndroid/trunk/WMSApp/app/lint.xml
+END
+proguard-rules.pro
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/proguard-rules.pro
+END
+frxs_key
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/frxs_server/!svn/ver/70104/wmsAndroid/trunk/WMSApp/app/frxs_key
+END
+build.gradle
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/frxs_server/!svn/ver/73107/wmsAndroid/trunk/WMSApp/app/build.gradle
+END
